@@ -103,13 +103,14 @@ nav a:hover{
   /*  background-image: url(../images/bot.jpg);*/
     background-color: rgb(0,0,0,0.6);
 
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center center;
     background-size: cover;
     font-size:18px;
     position:relative;
     clear:both;
     height: 200px;
+    
     
 }
 
