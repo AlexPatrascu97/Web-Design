@@ -40,7 +40,7 @@ nav a{
     display:inline-block;
     flex-direction:row;
     padding-right:40px;
-    
+    font-size:20px;
     margin-left:25px;
     margin-right:25px;
     text-decoration: none;
@@ -237,7 +237,7 @@ form .submit{
 }
 .title h4{
     color:#fff;
-    font-size:70px;
+    font-size:110px;
 }
 
 .list{
@@ -273,6 +273,8 @@ form .submit{
     margin-left:40px;
     margin-right:40px;
     margin-bottom:40px;
+    
+    
   }
 
 
@@ -386,6 +388,6 @@ form .submit{
     }
     .content1 {
        
-        margin-top:20px;
+        margin-top:200px;
       }
 }

@@ -41,10 +41,12 @@ function getPersons() {
                 appendToDOM(persons);
             });
         });
+        
 };
 
 // post 
 function postPersons() {
+    
     // creat post object
     const postObject = {
         name: formName.value,
