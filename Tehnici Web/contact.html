@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
     
     <meta charset="utf-8" />
@@ -15,11 +15,11 @@
 <body>
        
     <div class="logo">
-      <img src="logo.png">
+      <img src="logo.png" alt="">
     </div>
 
     <div class="logo2">
-            <img src="logo2.png">
+            <img src="logo2.png" alt="">
     </div>
 
    
@@ -37,16 +37,17 @@
         </div>
         
         <div class ="contact-form">
-                <form id="contact-form" method="post" action="">
+                <form id="contact-form" method="post" >
                 <input name="name" type="text" id="form-control-name" placeholder="Nume" required><br>
-                <input name="email" type="text" id="form-control-email" placeholder="Adresa Email" required><br>
-                <input name="CNP" type="text" id="form-control-cnp" placeholder="CNP"  required></textarea><br>    
+                <input name="email" type="email" id="form-control-email" placeholder="Adresa Email" required><br>
+                <span class="error" aria-live="polite"></span>
+                <input name="CNP" type="text" id="form-control-cnp" placeholder="CNP"  required><br>    
                 <button type="button" id="addButton"  >Trimiteti</button>
-                <form id="contact-form" method="post" action="">
+                
 
                        <input name="name" type="text" id="form-control-name1" placeholder="Nume" required ><br>
-                        <input name="email" type="text" id="form-control-email1" placeholder="Adresa Email" required ><br>
-                        <input name="CNP" type="text" id="form-control-cnp1" placeholder="CNP"  required ></textarea><br> 
+                        <input name="email" type="email" id="form-control-email1" placeholder="Adresa Email" required ><br>
+                        <input name="CNP" type="text" id="form-control-cnp1" placeholder="CNP"  required ><br> 
                         <button type="button" id="updateButton"  >Update</button>    
                         <button type="button" id="deleteButton"  >Delete</button>   
                         <button type="button" id="backButton"  >Inapoi</button>  
@@ -76,7 +77,8 @@
              <div class ="Follow">
                  <h3>Follow us</h3>
                  <ul>
-                    <li><a target="_blank" rel="noopener noreferrer"href="#" id="facebook"></i>Facebook</a></li>
+                    
+                    <li><a href="#" id="facebook" target="_blank"  rel="noopener noreferrer"><i class="fa fa-facebook" ></i> Facebook</a></li>
                  </ul>
     
              </div>

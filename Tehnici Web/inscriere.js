@@ -17,6 +17,8 @@ deleteButton.style.visibility="hidden";
 backButton.style.visibility="hidden";
 let idx = 0;
 
+
+
 function back(){
     formName1.style.visibility="hidden";
     formEmail1.style.visibility="hidden";
@@ -32,7 +34,22 @@ function back(){
 
 
 }
-// fetch the dogs list
+
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+function validateCnp(cnp) {
+    var re = /^((?!(0))[0-9]{13})$/;
+    return re.test(String(cnp).toLowerCase());
+}
+function validateName(name) {
+    var re =  /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
+    return re.test(String(name).toLowerCase());
+}
+
 function getPersons() {
     fetch('http://localhost:3001/persoane')
         .then(function (response) {
@@ -44,16 +61,36 @@ function getPersons() {
         
 };
 
-// post 
+ 
 function postPersons() {
     
-    // creat post object
+  
     const postObject = {
         name: formName.value,
         Mail: formEmail.value,
         CNP: formCnp.value
     }
-    // post 
+    if(validateName(formName.value)==0){
+        alert("bad name format");
+        return;
+       
+    
+    }
+   if(validateEmail(formEmail.value)==0){
+       alert("bad email format");
+       return;
+      
+
+   }
+   if(validateCnp(formCnp.value)==0){
+    alert("bad cnp format");
+    return;
+   
+
+}
+
+  
+
     fetch('http://localhost:3001/persoane', {
         method: 'post',
         headers: {
@@ -61,12 +98,13 @@ function postPersons() {
         },
         body: JSON.stringify(postObject)
     }).then(function () {
-        // Get the new persons list
+        
         getPersons();
-        // Reset Form
+        
         resetForm();
         
     });
+    
     formName1.style.visibility="visible";
     formEmail1.style.visibility="visible";
     formCnp1.style.visibility="visible";
@@ -83,14 +121,14 @@ function postPersons() {
     backButton.style.visibility="visible";
 }
 
-// delete 
+
 function deletePerson() {
-    // delete 
+    
     console.log(idx);
     fetch(`http://localhost:3001/persoane/`+idx , {
         method: 'DELETE',
     }).then(function () {
-        // Get the new  list
+        
         getPersons();
         
     });
@@ -107,15 +145,33 @@ function deletePerson() {
     backButton.style.visibility="hidden";
 }
 
-// update 
+
 function updatePerson(id) {
-    // creat put object
+    
     const putObject = {
         name: formName1.value,
         Mail: formEmail1.value,
         CNP: formCnp1.value
     }
-    // update 
+    if(validateName(formName1.value)==0){
+        alert("bad name format");
+        return;
+       
+    
+    }
+   if(validateEmail(formEmail1.value)==0){
+       alert("bad email format");
+       return;
+      
+
+   }
+   if(validateCnp(formCnp1.value)==0){
+    alert("bad cnp format");
+    return;
+   
+
+}
+    
     fetch(`http://localhost:3001/persoane/`+idx, {
         method: 'PUT',
         headers: {
@@ -123,7 +179,7 @@ function updatePerson(id) {
         },
         body: JSON.stringify(putObject)
     }).then(function () {
-        // Get the new 
+        
         getPersons();
         backButton.style.visibility="visible";
 
@@ -136,40 +192,16 @@ function updatePerson(id) {
 
 
 
-
-// copy edited dog information to form and add event listener on update button
-function editPerson(person) {
-    // copy dog information to form
-    formName.value = person.name;
-    formEmail.value = person.Mail;
-    formCnp.value = person.CNP
-    
-    
-    // disable add button
-    addButton.disabled = true;
-
-    // clear all events update button events
-    clearUpdateButtonEvents();
-
-    // enable and add event on update button
-    updateButton.disabled = false;
-    updateButton.addEventListener('click', function () {
-        updatePerson(dog.id)
-    });
-
-}
-
-// Create and append img and name DOM tags
 function appendToDOM(persons) {
-    // remove persons list if exist
+    
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
-    // create and append tags
+    
     for (let i = 0; i < persons.length; i++) {
        
        
-        // create name obj
+        
         let name = document.createElement('span');
         name.innerText = persons[i].name;
 
@@ -182,9 +214,9 @@ function appendToDOM(persons) {
          
        
 
-        // create a container 
+        
         let container = document.createElement('div');
-        // append elements to container
+        
        
         container.appendChild(name);
         container.appendChild(mail);
@@ -192,32 +224,29 @@ function appendToDOM(persons) {
 
       
 
-        // append container to DOM (list div)
+        
         list.appendChild(container);
         idx=(persons[persons.length-1].id);
     }
 }
 
-// reset form
+
 function resetForm() {
     formName.value = '';
     formEmail.value = '';
     formCnp.value = '';
 }
-//  remove Update Button to clear events 
-function clearUpdateButtonEvents() {
-    let newUpdateButton = updateButton.cloneNode(true);
-    updateButton.parentNode.replaceChild(newUpdateButton, updateButton);
-    updateButton = document.getElementById('updateButton');
-}
 
 
 
-// add event listener on add button
+
+
+
 addButton.addEventListener('click', postPersons);
 deleteButton.addEventListener('click', deletePerson);
 updateButton.addEventListener('click',updatePerson);
 backButton.addEventListener('click',back)
 
-// get dogs
+
+
 getPersons();

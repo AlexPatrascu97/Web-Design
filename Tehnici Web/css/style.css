@@ -13,7 +13,7 @@ html,body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-    *background-size: auto;
+    background-size: auto;
 
 }
 
@@ -24,10 +24,9 @@ header{
 
 
 
-nav{
+  .topgrid {
     
-    float:left;
-    list-style-type: none;
+    
     padding-left:500px; 
     padding-top:50px; 
     margin-top:25px;
@@ -37,8 +36,8 @@ nav{
     
     
 }
-nav a{
-    display:inline-block;
+ .topgrid nav a{
+   display:inline-block;
     flex-direction:row;
     padding-right:40px;
     font-size:20px;
@@ -51,13 +50,14 @@ nav a{
     transition: 0.6s ease;
 }
 
-nav a:hover{
+.topgrid nav a:hover{
     background-color: #fff;
     color:#000;
 }
 
+/*
 .topgrid{
-   /* background-image: url(../images/box2.jpg);*/
+ 
    
     height: 12vh;
     background-size:cover;
@@ -66,6 +66,13 @@ nav a:hover{
     
 
 }
+*/
+
+.topgrid{
+    display:flex;
+    flex-wrap: wrap;
+}
+
 #orar{
     background-color: DodgerBlue;
    
@@ -174,7 +181,7 @@ nav a:hover{
 }
 
 
-form{
+.contact-form{
     margin-top:100px;
     margin-left:700px;
     transition:all 4s ease-in-out;
@@ -191,11 +198,11 @@ form{
     margin-bottom:16px;
 }
 
-input{
-    height:45px;
+.contact-form input{
+    height:50px;
 }
 
-form .submit{
+#form .submit{
     background:#ff5722;
     border-color:transparent;
     color:#fff;
@@ -207,11 +214,7 @@ form .submit{
 
 
 }
-/*
-#form-control-name1 ,#form-control-email1,#form-control-cnp1,#updateButton,#deleteButton{
-    visibility: hidden;
-}
-*/
+
 #form-control-name1{
     padding-top:30px;
 }
@@ -234,7 +237,7 @@ form .submit{
     position:absolute;
     top:50%;
     left:50%;
-    transform: translate(-50%,-50%);
+   transform: translate(-50%,-50%);
 }
 .title h4{
     color:#fff;
@@ -286,14 +289,28 @@ form .submit{
     margin-right:40px; 
 }
 
-  
+.error {
+    width  : 100%;
+    padding: 0;
+   
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+   
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+   .error.active {
+    padding: 0.3em;
+ }
 
   
 
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     html,body {
-        width:100%;
+        widows: 100%;
         
     }
     
@@ -302,34 +319,18 @@ form .submit{
        
     }
     
-    .Follow {
 
-        padding-left:500px; 
-    
-
-    }
-
-    .contact{
- 
-        padding-left:20px; 
-    }
-
-    .Adresa{
-
-        padding-left:500px; 
-
-    }
-
-    nav{
+    .topgrid{
         padding-left:10px;
+        flex-direction: column;
         
     }
-    form{
-        margin-left: 80px;
+    .contact-form{
+        margin-left: 100px;
         padding-top:150px;
 
     }
-    nav a{
+    .topgrid nav a{
         margin-top:10px;
         margin-bottom:10px;
     }
@@ -339,25 +340,32 @@ form .submit{
       }
     
       .title{
-        margin-top:100px;
-        margin-left:30px;
+       
+        margin-top:500px;
+        
       }
+      
+      
     
 }
 
-@media  (min-width: 768px) and (max-width: 1280px){
+@media  only screen and (min-width: 768px) and (max-width: 1280px){
     html,body {
         width:100%;
         
     }
+    .footer{
+        width: auto;
+    }
     .header{
-        width: 70%;
+        float:none;
+        width: auto;
     }
     .footer {
        width:30%;
     }
 
-    nav{
+    .topgrid{
         padding-left:100px;
         
     }
@@ -374,11 +382,12 @@ form .submit{
       }
     
       .title{
-        margin-top:100px;
-        margin-left:30px;
+       
+        margin-top:400px;
+        
       }
 
-      form{
+      .contact-form{
         margin-left: 180px;
         padding-top:150px;
 
@@ -386,7 +395,7 @@ form .submit{
 
 }
 
-@media  (min-width: 1280px){
+@media  only screen and (min-width: 1280px){
     nav a{
         margin-top:10px;
         margin-bottom:20px;
